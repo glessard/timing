@@ -71,7 +71,7 @@ extension Time
     println(Time.Since(starttime))
   */
 
-  public static func Since(tic: Time) -> Interval
+  public static func Since(_ tic: Time) -> Interval
   {
     return tic.toc
   }
