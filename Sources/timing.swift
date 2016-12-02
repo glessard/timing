@@ -5,9 +5,14 @@
 //  Copyright (c) 2014 Guillaume Lessard. All rights reserved.
 //
 
-import Foundation.NSDate
-import Foundation.NSThread
-import AppKit.AppKitDefines
+import Darwin
+
+import struct Foundation.Date
+import struct Foundation.CFTimeInterval
+import struct Foundation.CFAbsoluteTime
+import func   Foundation.CFAbsoluteTimeGetCurrent
+
+import func   AppKit.CACurrentMediaTime
 
 /**
   Timing-related utility based on mach_absolute_time().
@@ -58,7 +63,7 @@ public struct Time: CustomStringConvertible
 
   public var description: String
   {
-    return NSDate(timeIntervalSinceReferenceDate: absoluteTime).description
+    return Date(timeIntervalSinceReferenceDate: absoluteTime).description
   }
 }
 
