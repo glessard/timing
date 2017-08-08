@@ -32,3 +32,6 @@ DerivedData
 # Carthage/Checkouts
 
 Carthage/Build
+
+Package.resolved
+Timing.xcodeproj
