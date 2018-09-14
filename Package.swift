@@ -1,29 +1,31 @@
-// swift-tools-version:4.0
+// swift-tools-version:4.2
 
 import PackageDescription
 
-let name = "timing"
+#if !swift(>=4.2)
+let versions = [3,4]
+#else
+let versions = [SwiftVersion.v3, .v4, .v4_2]
+#endif
 
 #if swift(>=4.0)
 
 let package = Package(
-  name: name,
+  name: "timing",
   products: [
-    .library(name: name, type: .static, targets: [name]),
+    .library(name: "timing", type: .static, targets: ["timing"]),
   ],
   targets: [
-    .target(name: name),
-    .testTarget(
-      name: name+"Tests",
-      dependencies: [Target.Dependency(stringLiteral: name)]),
+    .target(name: "timing"),
+    .testTarget(name: "timingTests", dependencies: ["timing"]),
   ],
-  swiftLanguageVersions: [3,4]
+  swiftLanguageVersions: versions
 )
 
 #else
 
 let package = Package(
-  name: name
+  name: "timing"
 )
 
 #endif
