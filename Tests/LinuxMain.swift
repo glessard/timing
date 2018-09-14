@@ -1,6 +1,8 @@
 import XCTest
-@testable import timingTests
 
-XCTMain([
-  testCase(TimingTests.allTests),
-])
+import timingTests
+
+var tests = [XCTestCaseEntry]()
+tests += timingTests.__allTests()
+
+XCTMain(tests)

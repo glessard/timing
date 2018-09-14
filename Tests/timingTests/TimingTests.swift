@@ -12,14 +12,6 @@ let iterations = 1_000_000
 
 class TimingTests: XCTestCase
 {
-  static var allTests: [(String, (TimingTests) -> () throws -> Void)] {
-    return [
-      ("testToc", testToc),
-      ("testPrint", testPrint),
-      ("testPrintDemo", testPrintDemo),
-    ]
-  }
-
   func testToc()
   {
     let tic = Date()
