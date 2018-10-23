@@ -48,7 +48,7 @@ public struct Interval: CustomStringConvertible
     ns = Int64(seconds*1e9)
   }
 
-  public static func Since(_ tic: Date) -> Interval
+  public static func since(_ tic: Date) -> Interval
   {
     return tic.toc
   }
