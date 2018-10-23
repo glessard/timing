@@ -2,9 +2,9 @@ import XCTest
 
 extension TimingTests {
     static let __allTests = [
-        ("testPrint", testPrint),
-        ("testPrintDemo", testPrintDemo),
-        ("testToc", testToc),
+        ("testCustomString", testCustomString),
+        ("testPrintExample", testPrintExample),
+        ("testSince", testSince),
     ]
 }
 
