@@ -15,7 +15,7 @@ class TimingTests: XCTestCase
 {
   func testSince()
   {
-    let t1 = Date()
+    let t1 = Tic()
     let i = Interval.since(t1)
     XCTAssertGreaterThanOrEqual(i.ns, 0)
     XCTAssertGreaterThanOrEqual(i.interval, TimeInterval())
@@ -50,7 +50,7 @@ class TimingTests: XCTestCase
 
   func testPrintExample()
   {
-    let tic = Date()
+    let tic = Tic()
     usleep(1)
     let dt1 = tic.toc
     usleep(100)

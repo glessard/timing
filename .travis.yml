@@ -1,6 +1,6 @@
-language: swift
+language: objective-c
 
-matrix:
+jobs:
   include:
     - os: osx
       osx_image: xcode8.3
@@ -20,7 +20,11 @@ matrix:
 
     - os: osx
       osx_image: xcode10.2
-      env: SWIFT=5.0
+      env: SWIFT=5.0.1
+
+    - os: osx
+      osx_image: xcode11.2
+      env: SWIFT=5.1.2
 
     - os: linux
       dist: xenial
@@ -40,12 +44,21 @@ matrix:
     - os: linux
       dist: xenial
       language: generic
-      env: SWIFT=4.2.2
+      env: SWIFT=4.2.4
+
+    - os: linux
+      dist: xenial
+      language: generic
+      env: SWIFT=5.0.3
+
+    - os: linux
+      dist: xenial
+      language: generic
+      env: SWIFT=5.1.2
 
 before_install:
   - clang --version
-  - chmod u+x Tests/install-swift.sh
-  - . Tests/install-swift.sh
+  - . Utilities/install-swift.sh
 
 script:
   - /bin/bash Tests/test-script.sh

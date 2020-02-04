@@ -1,22 +1,28 @@
 //
 //  Timing.swift
 //
-//  Created by Guillaume Lessard on 2014-06-24.
-//  Copyright (c) 2014 Guillaume Lessard. All rights reserved.
+//  Copyright (c) 2014-2020 Guillaume Lessard. All rights reserved.
 //
 
-import struct Foundation.Date
+import class  Foundation.ProcessInfo
 import struct Foundation.TimeInterval
 
 /**
-  Time pretty-printing, based on Foundation.Date
+  Timestamp
 */
 
-extension Date
+public struct Tic
 {
+  private let tic: TimeInterval
+
+  public init()
+  {
+    tic = ProcessInfo.processInfo.systemUptime
+  }
+
   public var toc: Interval
   {
-    return Interval(seconds: -self.timeIntervalSinceNow)
+    return Interval(seconds: ProcessInfo.processInfo.systemUptime - tic)
   }
 }
 
@@ -48,7 +54,7 @@ public struct Interval: CustomStringConvertible
     ns = Int64(seconds*1e9)
   }
 
-  public static func since(_ tic: Date) -> Interval
+  public static func since(_ tic: Tic) -> Interval
   {
     return tic.toc
   }
