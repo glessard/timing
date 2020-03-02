@@ -20,9 +20,9 @@ public struct Tic
     tic = ProcessInfo.processInfo.systemUptime
   }
 
-  public var toc: Interval
+  public var toc: TimingInterval
   {
-    return Interval(seconds: ProcessInfo.processInfo.systemUptime - tic)
+    return TimingInterval(seconds: ProcessInfo.processInfo.systemUptime - tic)
   }
 }
 
@@ -30,7 +30,7 @@ public struct Tic
   A struct whose purpose is to pretty-print short durations of time.
 */
 
-public struct Interval: CustomStringConvertible
+public struct TimingInterval: CustomStringConvertible
 {
   public let ns: Int64
 
@@ -54,7 +54,7 @@ public struct Interval: CustomStringConvertible
     ns = Int64(seconds*1e9)
   }
 
-  public static func since(_ tic: Tic) -> Interval
+  public static func since(_ tic: Tic) -> TimingInterval
   {
     return tic.toc
   }
@@ -90,12 +90,15 @@ public struct Interval: CustomStringConvertible
   }
 }
 
-public func / (dt: Interval, n: Int) -> Interval
+@available(*, unavailable, renamed: "TimingInterval")
+public struct Interval {}
+
+public func / (dt: TimingInterval, n: Int) -> TimingInterval
 {
-  return Interval(dt.ns/Int64(n))
+  return TimingInterval(dt.ns/Int64(n))
 }
 
-public func - (lhs: Interval, rhs: Interval) -> Interval
+public func - (lhs: TimingInterval, rhs: TimingInterval) -> TimingInterval
 {
-  return Interval(lhs.ns - rhs.ns)
+  return TimingInterval(lhs.ns - rhs.ns)
 }
