@@ -7,7 +7,7 @@ import PackageDescription
 let package = Package(
   name: "timing",
   products: [
-    .library(name: "timing", type: .static, targets: ["timing"]),
+    .library(name: "timing", targets: ["timing"]),
   ],
   targets: [
     .target(name: "timing"),
